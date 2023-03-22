@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model country {
+  country_id       Int     @id @default(autoincrement())
+  country_iso_code String? @db.VarChar(10)
+  country_name     String? @db.VarChar(200)
+}
+
+model department {
+  department_id   Int     @id @default(autoincrement())
+  department_name String? @db.VarChar(200)
+}
+
+model gender {
+  gender_id Int     @id
+  gender    String? @db.VarChar(20)
+}
+
+model genre {
+  genre_id   Int     @id
+  genre_name String? @db.VarChar(100)
+}
+
+model language {
+  language_id   Int     @id @default(autoincrement())
+  language_code String? @db.VarChar(10)
+  language_name String? @db.VarChar(500)
+}
+
+model language_role {
+  role_id       Int     @id
+  language_role String? @db.VarChar(20)
+}
